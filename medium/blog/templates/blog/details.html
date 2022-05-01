@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock title %}
+{% block content %}
+<div id="main-container">
+   {% include 'right.html' %}
+    <div id='container'>
+   {% include 'navbar.html' %}
+
+        <header id="detail-banner" class="banner">
+            <span>
+                {{blog.author}}<a href="#" class="follow link">Follow</a>
+            </span>
+            <span>{{blog.publish}}</span>
+        </header>
+   
+        <div class="main">
+            
+            <div class="main-content">
+                <div class="blog-body">
+                    <h1 id="detail-title">{{blog.title}}</h1>
+                    <div id="featured-image" >
+                        <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    </div>
+                    <div id="detail-body">
+                        {{blog.body|linebreaks}}
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% include 'left.html' %}
+
+</div>
+{% endblock content %}

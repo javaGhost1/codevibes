@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 from embed_video.fields import EmbedVideoField
 
 # Create your models here.
@@ -36,6 +37,10 @@ class Blog(models.Model):
     objects = models.Manager
     # custom manager
     published = PublishedManager()
+
+    def get_absolute_url(self):
+        return reverse("blog:blog_detail", args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
+    
 
     def __str__(self) -> str:
         return self.title

@@ -2,22 +2,10 @@
 {% block title %}Homepage{% endblock title %}
 {% block content %}
 <div id="main-container">
-    <div id="navbar">
-        <span class="logo">
-            <img src="https://img.icons8.com/nolan/64/lunar-client.png"/>
-        </span>
-        <ul class="nav-list">
-          
-            <li><img src="https://img.icons8.com/material-rounded/24/000000/home.png"/></li>
-            <li><img src="https://img.icons8.com/ios/24/000000/appointment-reminders--v1.png"/></li>
-            <li><img src="https://img.icons8.com/ios/24/000000/bookmark-ribbon--v1.png"/></li>
-            <li><img src="https://img.icons8.com/small/24/000000/document.png"/></li>
-            <li><img src="https://img.icons8.com/small/24/000000/making-notes.png"/></li>
-            
-        </ul>
-        
-    </div>
+   {% include 'right.html' %}
     <div id='container'>
+   {% include 'navbar.html' %}
+
         <header class="banner">
             <h1>CodeVibes</h1>
             <br>
@@ -25,7 +13,7 @@
                 <p>Home</p>
             </div>
          
-            <hr>
+            {% comment %} <hr> {% endcomment %}
         </header>
         
         
@@ -33,11 +21,12 @@
         <div class="main">
             <div class="main-content">
                 <a href='#' class='blog-details'>{{blog.author}}.<span>{{blog.publish}}</span></a>
-                <a href="#" class='blog-body'>
+                <a href="{{blog.get_absolute_url}}" class='blog-body'>
                     <h3 class='blog-title'>{{blog.title}}</h3>
                     <span>
                         {{blog.body|truncatewords:25|linebreaks}}
                     </span>
+                    <p>published by {{blog.author}}</P
                 </a>
             </div>
             <div class="featured-image" >
@@ -47,27 +36,7 @@
         <hr>
         {% endfor %}
     </div>
-    <div id="left-navbar">
-       
-        <div class="nav-list">
-            <span class="account"> 
-                <a href="#" class="sign-up link">Get Started</a>
-                <a href="#" class='sign-in'>Sign In</a>
-            </span>
-            <input type="text" placeholder="Search" class="search" >
-            <span class="logo">
-                <img src="https://img.icons8.com/nolan/64/lunar-client.png"/>
-            </span>
-            <p id="name">CodeVibes</p>
-            <p>1.7K followers</p>
-            <p>Software developer</p>
-            <span>
-                <a href="#" class="follow link">Follow</a>
-                <a href="#" class='email'><img src="https://img.icons8.com/color/48/000000/circled-envelope.png"/></a>
-            </span>
-        </div>
-    
-    </div>
+    {% include 'left.html' %}
 
 </div>
 {% endblock content %}
