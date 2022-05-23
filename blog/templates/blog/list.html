@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock title %}
+{% block content %}
+<div id="main-container">
+   {% include 'right.html' %}
+    <div id='container'>
+   {% include 'navbar.html' %}
+
+        <header class="banner">
+            <h1>CodeVibes</h1>
+            <br>
+            <div class="menu">
+                <p>Home</p>
+            </div>
+         
+            {% comment %} <hr> {% endcomment %}
+        </header>
+        
+        
+        {% for blog in blogs %}
+        <div class="main">
+            <div class="main-content">
+                <a href='#' class='blog-details'>{{blog.author}}.<span>{{blog.publish}}</span></a>
+                <a href="{{blog.get_absolute_url}}" class='blog-body'>
+                    <h3 class='blog-title'>{{blog.title}}</h3>
+                    <span>
+                        {{blog.body|truncatewords:25|linebreaks}}
+                    </span>
+                    <p>published by {{blog.author}}</P
+                </a>
+            </div>
+            <div class="featured-image" >
+                <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+    {% include 'left.html' %}
+
+</div>
+{% endblock content %}
