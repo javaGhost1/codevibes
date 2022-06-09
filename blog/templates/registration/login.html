@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+ Login
+ {% endblock title %}
+{% block content %}
+<div class='user-account'>
+   
+    <div class="card">
+        <span class="user-logo">
+            <img src="https://img.icons8.com/nolan/64/lunar-client.png"/>
+        </span>
+        {% if forms.errors %}
+            <p>Your username and password did not match</p>
+        {% else %}
+            <p class="user-banner">Login to CodeVibes</p>
+        {% endif %}
+        <div class="login-form">
+            <form action="{% url 'account:login'%}" method='post'>
+                {{form}}
+                {% csrf_token %}
+                <input type='hidden' name='next' value="{{next}}"/>
+                <input type='submit' id="user-btn" value='Log In'/>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

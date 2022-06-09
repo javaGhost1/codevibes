@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
     'blog.apps.BlogConfig',
+    'account.apps.AccountConfig',
     'embed_video',
     'bootstrap4',
 ]
@@ -102,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = "blog:blog_list"
+LOGIN_REDIRECT_URL = "blog:blog_list"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

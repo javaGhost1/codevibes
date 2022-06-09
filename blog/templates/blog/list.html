@@ -20,13 +20,13 @@
         {% for blog in blogs %}
         <div class="main">
             <div class="main-content">
-                <a href='#' class='blog-details'>{{blog.author}}.<span>{{blog.publish}}</span></a>
+                <a href='#' class='blog-details'><span>{{blog.publish}}</span></a>
                 <a href="{{blog.get_absolute_url}}" class='blog-body'>
                     <h3 class='blog-title'>{{blog.title}}</h3>
                     <span>
                         {{blog.body|truncatewords:25|linebreaks}}
                     </span>
-                    <p>published by {{blog.author}}</P
+                   
                 </a>
             </div>
             <div class="featured-image" >

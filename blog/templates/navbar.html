@@ -5,7 +5,13 @@
         </a>
     </div>
     <div class="account"> 
-        <a href="#" class="sign-up link">Get Started</a>
-        <a href="#" class='sign-in'>Sign In</a>
+        {% if request.user.is_authenticated %}
+            Hello {{request.user.username}},
+            <a href="{% url 'account:logout'%}" class='sign-in'>Log-Out</a>
+
+        {% else %}
+            <a href="{% url 'account:register'%}" class="sign-up link">Get Started</a>
+            <a href="{% url 'account:login'%}" class='sign-in'>Sign In</a>
+        {% endif %}
     </div>
 </div>
