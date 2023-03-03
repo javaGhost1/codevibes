@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from embed_video.fields import EmbedVideoField
-
+from taggit.managers import TaggableManager
 # Create your models here.
-# class Menu(models.Model):
-#     """links, images, videos"""
-#     image = models.ImageField(upload_to='images/')
-#     links = models.URLField()
-#     video = EmbedVideoField()
+class Menu(models.Model):
+    """links, images, videos"""
+    image = models.ImageField(upload_to='images/')
+    links = models.URLField()
+    video = EmbedVideoField()
     
-#     def __str__(self) -> str:
-#         return self.image
+    def __str__(self) -> str:
+        return self.image
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
@@ -37,7 +37,7 @@ class Blog(models.Model):
     objects = models.Manager
     # custom manager
     published = PublishedManager()
-
+    tags = TaggableManager()
     def get_absolute_url(self):
         return reverse("blog:blog_detail", args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
     
@@ -45,3 +45,20 @@ class Blog(models.Model):
     def __str__(self) -> str:
         return self.title
 
+class Comment(models.Model):
+    """Creating a comment system"""
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=254)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'
+
+   

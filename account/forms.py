@@ -15,3 +15,5 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('passwords don\'t match.')
 
         return cd['password2']
+
+    

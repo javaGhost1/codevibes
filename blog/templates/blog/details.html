@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load blog_tags %}
 
 {% block title %}Homepage{% endblock title %}
 {% block content %}
 <div id="main-container">
    {% include 'right.html' %}
     <div id='container'>
-   {% include 'navbar.html' %}
+        {% include 'navbar.html' %}
 
         <header id="detail-banner" class="banner">
             <!-- <span>
@@ -23,9 +24,47 @@
                         <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
                     </div>
                     <div id="detail-body">
-                        {{blog.body|linebreaks}}
+                        {{blog.body|markdown}}
                     </div>
-            </div>
+                    <div class='recommend-posts'>
+                        <h2>Similar posts</h2>
+
+                        {%for post in similar_posts%}
+                            <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                        {%empty%}
+                            No similar post
+                        {%endfor%}
+                    </div>
+
+                </div>
+                {% with comments.count as total_comments %}
+                    <h2>
+                        {{total_comments}} comment{{total_comments|pluralize}}
+                    </h2>
+                {% endwith %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p class="info">
+                            {{forloop.counter}} Comment by {{comment.name}}
+                            {{comment.created}}
+                        </p>
+                        {{comment.body|linebreaks}}
+                    </div>
+                {% empty %}
+                    <p>There are no comments yet</p>
+                {% endfor %}
+                {% if new_comment %}
+                    <p></p>>
+                {% else %}
+                    <h2> Leave a comment below.</h2>
+                    <form method='post'>
+                        {{comment_form.as_p}}
+                        {% csrf_token %}
+                        <p>
+                            <input type='submit' value='Add comment'>
+                        </p>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>

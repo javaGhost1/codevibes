@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0', 'guarded-cove-79207.herokuapp.com',  '127.0.0.1']
 
 # Application definition
-
+SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     # my apps
     'blog.apps.BlogConfig',
     'account.apps.AccountConfig',
     'embed_video',
     'bootstrap4',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'medium.wsgi.application'
 
+# Email configuretion
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'dennismurage97@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your_password'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -105,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'account:login'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = "blog:blog_list"
 LOGIN_REDIRECT_URL = "blog:blog_list"
