@@ -1,29 +1,17 @@
 {% extends 'base.html' %}
-<<<<<<< HEAD
 {% load blog_tags %}
-=======
->>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 
 {% block title %}Homepage{% endblock title %}
 {% block content %}
 <div id="main-container">
    {% include 'right.html' %}
     <div id='container'>
-<<<<<<< HEAD
         {% include 'navbar.html' %}
 
         <header id="detail-banner" class="banner">
             <!-- <span>
                 {{blog.author}}<a href="#" class="follow link">Follow</a>
             </span> -->
-=======
-   {% include 'navbar.html' %}
-
-        <header id="detail-banner" class="banner">
-            <span>
-                {{blog.author}}<a href="#" class="follow link">Follow</a>
-            </span>
->>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
             <span>{{blog.publish}}</span>
         </header>
    
@@ -36,7 +24,6 @@
                         <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
                     </div>
                     <div id="detail-body">
-<<<<<<< HEAD
                         {{blog.body|markdown}}
                     </div>
                     <div class='recommend-posts'>
@@ -87,11 +74,6 @@
                         </p>
                     </form>
                 {% endif %}
-=======
-                        {{blog.body|linebreaks}}
-                    </div>
-            </div>
->>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
             </div>
         </div>
     </div>
