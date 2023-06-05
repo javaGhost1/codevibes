@@ -24,11 +24,16 @@ body{
     border-right: 1px solid #eee;
     height: 100vh; 
   }
+<<<<<<< HEAD
   .bottom-nav{
       display: none;
   }
 .logo{
     margin: 10px 0px 150px 20px;
+=======
+.logo{
+    margin-bottom: 150px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 }
 .nav-list{
     list-style: none;
@@ -46,16 +51,24 @@ body{
   .nav-list li:hover{
       cursor: pointer;
   } 
+<<<<<<< HEAD
 .banner a{
     color: purple;
 }
 .banner{
    
     
+=======
+
+.banner{
+   
+    height: 29vh;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+<<<<<<< HEAD
     padding: 30px 0px 10px 0px;
 
 }
@@ -63,6 +76,12 @@ body{
     font-size: 42px;
     color: purple;
     padding-top: 75px;
+=======
+    border-bottom: 1px solid rgb(212, 210, 210);
+}
+.banner h1{
+    padding-top: 70px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     font-weight: 800;
     text-align: left;
 }
@@ -73,6 +92,7 @@ body{
     height: 1px;
     padding-bottom: 40px;
 }
+<<<<<<< HEAD
 .menu{
     border-bottom: 1px solid rgb(212, 210, 210);
     width: 100%;
@@ -82,12 +102,19 @@ body{
     padding-right: 30px;
 }
 
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 #container{
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
     padding-left: 90px;
 
+=======
+    padding-left: 30px;
+  
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 }
 .blog-details{
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -100,6 +127,7 @@ body{
     color: rgba(117, 117, 117, 1);
     font-size: 14px;
     line-height: 20px;
+<<<<<<< HEAD
    padding: 19px 0px 5px 0px;
 }
 .main{
@@ -111,13 +139,27 @@ body{
     border-bottom: 1px solid #eee;
     line-height: 1.3em;
     padding-top: 10px;
+=======
+    padding-left: 7px;
+}
+.main{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+    line-height: 1.3em;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 }
 .main-content a:hover{
     text-decoration: none;
     color: rgba(0,0,0,0.8);;
 }
 .blog-title{
+<<<<<<< HEAD
     padding-top: 7px;
+=======
+    padding: 7px 0px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     font-weight: 900;
     font-size: 1.5em;
 }
@@ -133,6 +175,7 @@ body{
 
 }
 .featured-image{
+<<<<<<< HEAD
     min-width: 130px; 
     max-height: 170px;
     /* width: auto; */
@@ -186,18 +229,53 @@ body{
 
 }
 
+=======
+    min-width: 80px;
+    max-height: 120px;
+    width: auto;
+    padding-top: 10px;
+   
+
+}
+.main img{
+    width: auto;
+    height: 100%;
+    padding-left: 10px;
+    object-fit: cover;
+    object-position: center;
+
+}
+#left-navbar{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    align-items: center;
+    border-left: 1px solid #eee;
+    width: 25vw;
+
+}
+#left-navbar .nav-list{
+    display: block;
+    padding: 20px;
+}
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 .nav-list{
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
+<<<<<<< HEAD
     align-items: center;
+=======
+    /* align-items: center; */
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     height: 100vh;
 }
 .nav-list span{
     /* padding: 20px; */
     margin-bottom: 20px;
 }
+<<<<<<< HEAD
 #left-navbar .nav-list{
     /* display: block; */
     /* padding: 20px; */
@@ -206,19 +284,29 @@ body{
     align-items: center;
     
 }
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 .nav-list span a{
     text-decoration: none;
     font-size: 0.9em;
 }
+<<<<<<< HEAD
 
 .nav-list p{
     text-align: center;
     padding: 0px;
     margin: 0px;
+=======
+.link:hover{
+    color: #fff;
+}
+.nav-list p{
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     font-weight: 100;
     color: rgba(117, 117, 117, 1);
 }
 .account{
+<<<<<<< HEAD
     /* width: 100%; */
 }
 .sign-up{
@@ -227,10 +315,21 @@ body{
     border-radius: 24px;
     color: #fff;
     /* margin: 5px; */
+=======
+    width: 100%;
+}
+.sign-up{
+    border: none;
+    background-color: #000;
+    border-radius: 24px;
+    color: #fff;
+    margin: 5px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     padding: 12px 27px;
     
 }
 .sign-in{
+<<<<<<< HEAD
    
     background-color: #fff;
     color: #000;
@@ -267,6 +366,18 @@ body{
 }
 #name{
     font-size: 19px;
+=======
+    color: green;
+}
+.search{
+    margin: 45px 0px;
+    border-radius: 24px;
+    border: 1px solid #eee;
+    padding: 5px 15px;
+    width: 100%;
+}
+#name{
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     font-weight: 900;
     color: #000;
 }
@@ -301,7 +412,10 @@ body{
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 #featured-image{
     /* height: 400px; */
     max-width: 600px;
@@ -319,6 +433,7 @@ body{
     word-break: break-word;
     overflow-wrap: break-word;
 }
+<<<<<<< HEAD
 .card{
     /* display: flex; */
     justify-content: center;
@@ -447,20 +562,31 @@ body{
     font-size: 17px;
     padding-bottom: 5px;
 }
+=======
+
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 @media screen and (max-width: 480px) {
     .blog-body{
         font-size: 10px;
     }
     .banner{
+<<<<<<< HEAD
         padding-top: 30px;
         justify-content: flex-end;
+=======
+        height: 130px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     }
     .top-nav{
         display: inline;
         position: fixed;
     }
     .featured-image img{
+<<<<<<< HEAD
         max-width: 110px;
+=======
+        max-width: 60px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     }
     .blog-body span{
         display: none;
@@ -470,7 +596,10 @@ body{
     }
    
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 @media only screen and (min-width: 481px) {
    #container{
        width: 60%;
@@ -478,6 +607,7 @@ body{
        
    }
    .featured-image img{
+<<<<<<< HEAD
     max-width: 120px;
     }
    .banner{
@@ -487,6 +617,16 @@ body{
    }
    
 }
+=======
+    max-width: 90px;
+}
+   .banner{
+       width: 70%;
+       height: 180px;
+       margin: auto;
+   }
+  }
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 
 @media only screen and (max-width: 1024px) {
     #navbar, #left-navbar{
@@ -498,6 +638,7 @@ body{
         justify-content: space-between;
         position: fixed;
         background-color: #fff;
+<<<<<<< HEAD
         height: 60px;
         width: 100vw;   
         border-bottom: 1px solid #eee;
@@ -514,6 +655,19 @@ body{
     }
     .banner{
         width: 90vw;
+=======
+        height: 80px;
+        width: 100vw;   
+        border-bottom: 1px solid #eee;
+       
+    }
+    .top-nav .account{
+       padding: 20px 10px;
+       
+    }
+    .banner{
+        width: 84vw;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
         margin: auto;
         margin-top: 20px;
         margin-bottom: 0px;
@@ -521,28 +675,46 @@ body{
     
     
     .main-content{
+<<<<<<< HEAD
         /* width: 70vw; */
+=======
+        width: 70vw;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
         padding: 0px;
        margin: 0px;
     }
     .main{
+<<<<<<< HEAD
         width: 90%;
+=======
+        width: 100%;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
         
     }
     .main hr{
         margin: 0px;
     }
     .main img{
+<<<<<<< HEAD
         /* height: 57%; */
+=======
+        height: 57%;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     }
     #container{
         width: 100%;
         margin: auto;
         text-align: left;
+<<<<<<< HEAD
         padding: 0px;
     }
     .banner{
        margin-top: 50px;
+=======
+    }
+    .banner{
+       margin-top: 70px;
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     }
     .banner h1{
         margin-top: 0px;
@@ -552,11 +724,16 @@ body{
    
    }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 497px){
+=======
+@media only screen and (max-width: 735px){
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     .blog-title{
         font-size: medium;
         font-weight: 900;
     }
+<<<<<<< HEAD
     .banner{
         justify-content: center;
         align-items: center;
@@ -566,12 +743,15 @@ body{
         padding: 21px 0px;
         font-size: 54px;
     }
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     .blog-body span{
         display: none;
     }
     .top-nav{
         position: fixed;
     }
+<<<<<<< HEAD
     .bottom-nav{
         position: absolute;
         top: 92vh;
@@ -589,4 +769,6 @@ body{
     .pages{
         padding-bottom: 70px;
     }
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 }

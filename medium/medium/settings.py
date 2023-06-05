@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-%n$auom6qcmwjc31)44b+vl3&t=cl1^2*$!zalgi$y4u2r0v&i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['0.0.0.0', 'guarded-cove-79207.herokuapp.com',  '127.0.0.1']
 
 # Application definition
@@ -33,12 +34,21 @@ SITE_ID = 1
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
 
+=======
+ALLOWED_HOSTS = ['.vercel.app']
+
+
+# Application definition
+
+INSTALLED_APPS = [
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'django.contrib.sites',
     'django.contrib.sitemaps',
     # my apps
@@ -48,6 +58,11 @@ INSTALLED_APPS = [
     'bootstrap4',
     'taggit',
     'django.contrib.postgres',
+=======
+    'blog.apps.BlogConfig',
+    'embed_video',
+    'bootstrap4',
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 ]
 
 MIDDLEWARE = [
@@ -80,6 +95,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'medium.wsgi.application'
 
+<<<<<<< HEAD
 # Email configuretion
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'dennismurage97@gmail.com'
@@ -88,18 +104,25 @@ WSGI_APPLICATION = 'medium.wsgi.application'
 # EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'codevibes',
         'USER': 'blog',
         'PASSWORD': 'Postgres09!',
         'HOST': 'localhost',
         'PORT': '',
+=======
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     }
 }
 
@@ -122,10 +145,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+<<<<<<< HEAD
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = "blog:blog_list"
 LOGIN_REDIRECT_URL = "blog:blog_list"
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -146,11 +172,19 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+=======
+
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+<<<<<<< HEAD
 MEDIA_URL = '/media/'
+=======
+MEDIA_URL = '/media/'
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
