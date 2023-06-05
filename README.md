@@ -30,3 +30,6 @@ When complete users should be able to blog either on the admin site or via email
 - the first problem would be notifying users of any updates
 - adding a follow system
 - adding images to the blogging site body
+
+#screenshots
+![codevibez](https://github.com/javaGhost1/codevibes/assets/44295135/64357b67-ffba-465d-821f-fdf5049edc60)
