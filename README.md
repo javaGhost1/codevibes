@@ -32,12 +32,7 @@ When complete users should be able to blog either on the admin site or via email
 - adding images to the blogging site body
 
 #screenshots
+<!-- ![mobile](https://github.com/javaGhost1/codevibes/assets/44295135/58a2df74-0764-4781-aea1-43f1fee5b61a) -->
+<!-- ![vibezcode](https://github.com/javaGhost1/codevibes/assets/44295135/1d6b5f9a-9c8e-4bd7-a02b-c5b35b30cf10) -->
 
-Mobile view
-![mobile](https://github.com/javaGhost1/codevibes/assets/44295135/58a2df74-0764-4781-aea1-43f1fee5b61a)
-
-Desktop view
-![vibezcode](https://github.com/javaGhost1/codevibes/assets/44295135/1d6b5f9a-9c8e-4bd7-a02b-c5b35b30cf10)
-
-
-<!-- ![codevibez](https://github.com/javaGhost1/codevibes/assets/44295135/64357b67-ffba-465d-821f-fdf5049edc60) -->
+![codevibez](https://github.com/javaGhost1/codevibes/assets/44295135/64357b67-ffba-465d-821f-fdf5049edc60)
