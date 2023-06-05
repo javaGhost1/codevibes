@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 {% load static %}
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 {% block title %}Homepage{% endblock title %}
 {% block content %}
 <div id="main-container">
@@ -8,6 +11,7 @@
    {% include 'navbar.html' %}
 
         <header class="banner">
+<<<<<<< HEAD
             <div>
             <h1><img src="{% static 'images/codez.png'%}"></h1>
             <br>
@@ -15,6 +19,12 @@
             <div class="menu">
                 <p>Home</p>
                 <p>About</p>
+=======
+            <h1>CodeVibes</h1>
+            <br>
+            <div class="menu">
+                <p>Home</p>
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
             </div>
          
             {% comment %} <hr> {% endcomment %}
@@ -24,6 +34,7 @@
         {% for blog in blogs %}
         <div class="main">
             <div class="main-content">
+<<<<<<< HEAD
                 <a href='#' class='blog-details'><span>{{blog.publish}}</span></a>
                 <a href="{{blog.get_absolute_url}}" class='blog-body'>
                     <h3 class='blog-title'>{{blog.title}}</h3>
@@ -56,14 +67,34 @@
             </div> 
         </div>
        
+=======
+                <a href='#' class='blog-details'>{{blog.author}}.<span>{{blog.publish}}</span></a>
+                <a href="{{blog.get_absolute_url}}" class='blog-body'>
+                    <h3 class='blog-title'>{{blog.title}}</h3>
+                    <span>
+                        {{blog.body|truncatewords:25|linebreaks}}
+                    </span>
+                    <p>published by {{blog.author}}</P
+                </a>
+            </div>
+            <div class="featured-image" >
+                <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
+            </div>
+        </div>
+        <hr>
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
         {% endfor %}
     </div>
     {% include 'left.html' %}
 
 </div>
+<<<<<<< HEAD
 <div class='container pages'>
     {% include "pagination.html" with page=blogs %}
 </div>
 
 
 {% endblock content %} 
+=======
+{% endblock content %}
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b

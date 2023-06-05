@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from embed_video.fields import EmbedVideoField
+<<<<<<< HEAD
 from taggit.managers import TaggableManager
 # Create your models here.
 class Menu(models.Model):
@@ -13,6 +14,18 @@ class Menu(models.Model):
     
     def __str__(self) -> str:
         return self.image
+=======
+
+# Create your models here.
+# class Menu(models.Model):
+#     """links, images, videos"""
+#     image = models.ImageField(upload_to='images/')
+#     links = models.URLField()
+#     video = EmbedVideoField()
+    
+#     def __str__(self) -> str:
+#         return self.image
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
@@ -37,7 +50,11 @@ class Blog(models.Model):
     objects = models.Manager
     # custom manager
     published = PublishedManager()
+<<<<<<< HEAD
     tags = TaggableManager()
+=======
+
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
     def get_absolute_url(self):
         return reverse("blog:blog_detail", args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
     
@@ -45,6 +62,7 @@ class Blog(models.Model):
     def __str__(self) -> str:
         return self.title
 
+<<<<<<< HEAD
 class Comment(models.Model):
     """Creating a comment system"""
     post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
@@ -62,3 +80,5 @@ class Comment(models.Model):
         return f'Comment by {self.name} on {self.post}'
 
    
+=======
+>>>>>>> 2ba3fbcf7569e8f3f5a154ce9d20e2a0d529993b
