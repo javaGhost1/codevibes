@@ -1,12 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.mail import send_mail
 # from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from taggit.models import Tag
 from django.db.models import Count
+from django.contrib.postgres.search import SearchVector
 from .models import Blog, Comment
-from .forms import EmailPostForm, CommentForm
+from .forms import EmailPostForm, CommentForm, SearchForm, TopicForm
 
 # Create your views here.
 # class BlogListView(ListView):
@@ -67,6 +68,21 @@ def blog_detail(request, year, month, day, blog):
     context = {'blog': blog, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'similar_posts':similar_posts}
     return render(request, 'blog/details.html', context)
 @login_required
+def new_blog(request):
+    """Add a new blog"""
+    if request.method != 'POST':
+        form = TopicForm()
+    else:
+        form = TopicForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blog:index')
+        
+    context = {'form': form}
+    return render(request, 'blog/new_blog.html', context)
+# post notification
+
+@login_required
 def post_share(request, post_id):
     # retrieve post by id
     post = get_object_or_404(Blog, id=post_id, status='published')
@@ -88,3 +104,20 @@ def post_share(request, post_id):
         form = EmailPostForm()
     context = {'post': post, 'form': form, 'sent': sent}
     return render(request, 'blog/share.html', context)
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Blog.published.annotate(search=SearchVector('title', 'body')).filter(search=query)
+    context = {
+        'form': form,
+        'query': query,
+        'results': results,
+    }
+
+    return render(request, 'blog/search.html', context)

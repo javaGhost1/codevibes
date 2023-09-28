@@ -37,17 +37,26 @@
                     </div>
 
                 </div>
+                <div>
+                    <img src="https://img.icons8.com/fluency/24/null/comments.png"/>
+                </div>
                 {% with comments.count as total_comments %}
-                    <h2>
-                        {{total_comments}} comment{{total_comments|pluralize}}
+
+                    <h2 class='total-comments'>
+                        {{total_comments}} comment{{total_comments|pluralize}}:
                     </h2>
                 {% endwith %}
                 {% for comment in comments %}
                     <div class="comment">
-                        <p class="info">
-                            {{forloop.counter}} Comment by {{comment.name}}
-                            {{comment.created}}
-                        </p>
+                        <div class="comment-info">
+                            <p class='n-info'>
+                            {{comment.name|capfirst}} 
+                            </p>
+                            {% comment %} {{forloop.counter}} {% endcomment %}
+                            <p class='info'>
+                            {{comment.created|time}}
+                            </p>
+                        </div>
                         {{comment.body|linebreaks}}
                     </div>
                 {% empty %}

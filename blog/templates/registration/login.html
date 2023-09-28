@@ -16,12 +16,17 @@
         {% endif %}
         <div class="login-form">
             <form action="{% url 'account:login'%}" method='post'>
-                {{form}}
+                {{form.as_p}}
                 {% csrf_token %}
                 <input type='hidden' name='next' value="{{next}}"/>
                 <input type='submit' id="user-btn" value='Log In'/>
             </form>
+            
         </div>
+        <br>
+        <a class='user-banner' href="{% url 'account:register'%}">Register</a>
+        <br>
+        <a class='user-banner' href="{% url 'account:password_reset'%}">Forgotten password?</a>
     </div>
 </div>
 {% endblock content %}

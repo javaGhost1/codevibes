@@ -5,16 +5,32 @@
         </a>
        
     </div>
-    <ul class="nav-list">
+    
+    <ul class="nav-list l-nav">
+        
         <li>
         <a href="{% url 'blog:blog_list'%}"> 
             <img src="https://img.icons8.com/material-rounded/24/000000/home.png"/>
+            Home
         </a>    
         </li>
-        <li><img src="https://img.icons8.com/ios/24/000000/appointment-reminders--v1.png"/></li>
-        <li><img src="https://img.icons8.com/ios/24/000000/bookmark-ribbon--v1.png"/></li>
-        <li><img src="https://img.icons8.com/small/24/000000/document.png"/></li>
-        <li><img src="https://img.icons8.com/small/24/000000/making-notes.png"/></li>
+        <li><img src="https://img.icons8.com/ios/24/000000/appointment-reminders--v1.png"/>
+        Notification</li>
+        <li>
+        <a href="{% url 'blog:post_search'%}">
+            <img src="https://img.icons8.com/ios-glyphs/28/null/search--v1.png"/>
+            Search
+        </a>
+        </li>
+        <li>
+        <a href='#'>
+            <img src="https://img.icons8.com/ios/24/000000/bookmark-ribbon--v1.png"/>
+            Bookmarks
+        </a>
+        </li>
+
+        <li><a href="{% url 'blog:new_blog'%}"><img src="https://img.icons8.com/small/24/000000/making-notes.png"/>Write</a>
+        </li>
         
     </ul>
     

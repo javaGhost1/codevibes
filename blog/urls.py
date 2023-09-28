@@ -12,6 +12,9 @@ urlpatterns = [
     path('tag/<slug:tag_slug>/', views.blog_list, name='blog_list_by_tag'),
     # path("", views.BlogListView.as_view(), name='blog_list'),
     path('<int:year>/<int:month>/<int:day>/<slug:blog>/', views.blog_detail, name='blog_detail'),
+    # new blog
+    path('new_blog/', views.new_blog, name='new_blog'),
+    path('search/', views.post_search, name='post_search'),
     path('feed/', LatestPostsFeed(), name='post_feed'),
     path('<int:post_id>/share/', views.post_share, name='post_share'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

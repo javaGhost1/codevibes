@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}Homepage{% endblock title %}
+{% block content %}
+<div id="main-container">
+   {% include 'right.html' %}
+    <div id='container'>
+   {% include 'navbar.html' %}
+
+        <header class="banner">
+            <div>
+            <h1><img src="{% static 'images/codez.png'%}"></h1>
+            <br>
+           {% comment %} <h4 class='motto'>Stay Hungry Stay Foolish</h4> {% endcomment %}
+            {% comment %} <div class="menu">
+                <p>Home</p>
+                <p>About</p>
+            </div> {% endcomment %}
+         
+            {% comment %} <hr> {% endcomment %}
+        </header>
+        
+        
+       <div >
+        <form action="{% url 'blog:new_blog' %}" method='post'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button name='submit'>Add Blog</button>
+        </form>
+       </div>
+    </div>
+    {% include 'left.html' %}
+
+</div>
+
+
+
+{% endblock content %} 

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['0.0.0.0', 'guarded-cove-79207.herokuapp.com',  '127.0.0.1']
 # Application definition
 SITE_ID = 1
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,10 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     # my apps
     'blog.apps.BlogConfig',
-    'account.apps.AccountConfig',
+    'bookmarks.apps.BookmarksConfig',
+    
     'embed_video',
     'bootstrap4',
     'taggit',
+    'easy_thumbnails',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -84,15 +89,19 @@ WSGI_APPLICATION = 'medium.wsgi.application'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+EMAIL_FILE_PATH = BASE_DIR
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'codevibes',
+        'USER': 'blog',
+        'PASSWORD': 'Postgres09!',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
