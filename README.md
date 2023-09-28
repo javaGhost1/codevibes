@@ -1,10 +1,10 @@
-# Blogging site with Django
-In this project I take my inspiration from medium and try to build a similar blogging site.
+# CODEVIBES
+
 Users can read as well as write blogs.<br> User can follow bloggers and request for notifications from a blogger. Users can as well email bloggers.
 The site is a work in progress as I am yet to create user accounts and make all links work. It is fully responsive and designs changed depending on the screen size.
 I have included a requirements files which contains all installations required for this site. Image display is still a problem but I'll be working on it soon.
 For the backend I feel it is working great. I used class based views, since they save alot of time and reduce the number of code lines.
-When complete users should be able to blog either on the admin site or via email. 
+When complete, users should be able to blog either on the admin site or via email. 
 
 # How to run the project
 1. Make an empty directory and open it in your terminal<br>
@@ -30,3 +30,9 @@ When complete users should be able to blog either on the admin site or via email
 - the first problem would be notifying users of any updates
 - adding a follow system
 - adding images to the blogging site body
+
+#screenshots
+<!-- ![mobile](https://github.com/javaGhost1/codevibes/assets/44295135/58a2df74-0764-4781-aea1-43f1fee5b61a) -->
+<!-- ![vibezcode](https://github.com/javaGhost1/codevibes/assets/44295135/1d6b5f9a-9c8e-4bd7-a02b-c5b35b30cf10) -->
+
+![codevibez](https://github.com/javaGhost1/codevibes/assets/44295135/64357b67-ffba-465d-821f-fdf5049edc60)
