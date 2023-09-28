@@ -1,0 +1,43 @@
+{% load static %}
+<div id="left-navbar">
+       
+    <div class="nav-list">
+        <span> 
+            {% if request.user.is_authenticated %}
+                Hello {{request.user.username}},
+                <a href="{% url 'account:logout'%}" class='sign-in'>Log-Out</a>
+
+            {% else %}
+                <a href="{% url 'account:register'%}" class="sign-up link">Get Started</a>
+                <a href="{% url 'account:login'%}" class='sign-up sign-in link'>Sign-In</a>
+            {% endif %}
+            
+        </span>
+        
+        {% comment %} <input type="text" placeholder="Search" class="search" > {% endcomment %}
+        <div class='subs'>
+            <div class='site-info'>
+                <span class="logo">
+                    <img src="https://img.icons8.com/nolan/64/lunar-client.png"/>
+                </span>
+                <p id="name"><img src="{% static 'images/coding.png'%}"></p><br> <p>a vibrant platform for sharing knowledge, fostering collaboration, and inspiring developers to create exceptional code.<br><br> For email notifications</p>
+                <div class='subscribe'>
+                    <a href="#">Subscribe
+                        <img width="40" height="40" src="https://img.icons8.com/ultraviolet/40/gmail--v1.png" alt="gmail--v1"/>
+
+                    </a>
+                    {% comment %} <a href="#" class='email'><img src="https://img.icons8.com/color/48/000000/circled-envelope.png"/></a> {% endcomment %}
+                </div>
+            </div>
+        
+           
+        </div>
+        <div class="donate">
+            <p>Support the website</p>
+            {% comment %} <img width="48" height="48" src="https://img.icons8.com/fluency/48/coffee-to-go.png" alt="coffee-to-go"/> {% endcomment %}
+            <a href="#" class="follow link" id="donate">Buy me Coffee</a>
+        </div>
+    </div>
+    
+
+</div>
