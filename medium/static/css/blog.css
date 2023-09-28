@@ -37,11 +37,7 @@ body{
       display: none;
   }
 .logo{
-<<<<<<< HEAD:static/css/blog.css
     margin-top: 90px;
-=======
-    margin: 10px 0px 150px 20px;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
 }
 .nav-list{
     list-style: none;
@@ -121,11 +117,7 @@ body{
     flex-direction: column;
     padding-left: 140px;
     align-items: center;
-<<<<<<< HEAD:static/css/blog.css
     
-=======
-    padding-left: 90px;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
 
 }
 .blog-details{
@@ -140,18 +132,12 @@ body{
     font-size: 14px;
     line-height: 20px;
    padding: 19px 0px 5px 0px;
-<<<<<<< HEAD:static/css/blog.css
 }
 .flex{
     display: flex;
 }
 .main{
     width: 84%;
-=======
-}
-.main{
-    width: 90%;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
     margin: auto;
     display: flex;
     /* justify-content: center; */
@@ -165,11 +151,7 @@ body{
     color: rgba(0,0,0,0.8);;
 }
 .blog-title{
-<<<<<<< HEAD:static/css/blog.css
     /* padding-top: 7px; */
-=======
-    padding-top: 7px;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
     font-weight: 900;
     font-size: 21px;
     font-family: var(--font-family-rebrand);
@@ -236,10 +218,7 @@ body{
 #left-navbar{
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD:static/css/blog.css
     /* justify-content: flex-start; */
-=======
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
     padding: 40px 0px;
     align-items: center;
    
@@ -254,21 +233,13 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-<<<<<<< HEAD:static/css/blog.css
     align-items: flex-start;
-=======
-    align-items: center;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
     height: 100vh;
 }
 .nav-list span{
     /* padding: 20px; */
     margin-bottom: 20px;
 }
-<<<<<<< HEAD:static/css/blog.css
-
-=======
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
 #left-navbar .nav-list{
     /* display: block; */
     /* padding: 20px; */
@@ -340,11 +311,7 @@ body{
     border: 1px solid rgba(128, 128, 128, 0.2);
     padding: 20px;
     /* margin: 90 0px 50px 0px; */
-<<<<<<< HEAD:static/css/blog.css
     width: 250px;
-=======
-    width: 240px;
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
 }
 #name{
     font-size: 19px;
@@ -486,7 +453,6 @@ body{
     justify-content: center;
     align-items: center;
     margin-bottom: 48px;
-<<<<<<< HEAD:static/css/blog.css
 }
 
 /* comment section */
@@ -511,32 +477,6 @@ body{
     letter-spacing: 0.05em;
 }
 
-=======
-}
-
-/* comment section */
-.comment{
-    padding: 10px 30px;
-    margin: 15px;
-    border-bottom: 1px solid #D0D0D0;
-    /* border-radius: 7px; */
-}
-.comment-info{
-    display: flex;
-    justify-content: space-between;
-}
-.total-comments{
-    padding-top: 20px;
-    color: green;
-    font-size: 21px;
-}
-.n-info{
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-}
-
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/static/css/blog.css
 /* password settings */
 .success-card{
     max-width: 520px;

@@ -43,18 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     # my apps
     'blog.apps.BlogConfig',
-<<<<<<< HEAD:medium/settings.py
-    'bookmarks.apps.BookmarksConfig',
-=======
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/medium/settings.py
+    # 'bookmarks.apps.BookmarksConfig',
     
     'embed_video',
     'bootstrap4',
     'taggit',
-<<<<<<< HEAD:medium/settings.py
     'easy_thumbnails',
-=======
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/medium/settings.py
     'django.contrib.postgres',
 ]
 

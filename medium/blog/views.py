@@ -7,11 +7,7 @@ from taggit.models import Tag
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector
 from .models import Blog, Comment
-<<<<<<< HEAD:blog/views.py
 from .forms import EmailPostForm, CommentForm, SearchForm, TopicForm
-=======
-from .forms import EmailPostForm, CommentForm, SearchForm
->>>>>>> d32a961ec6d747a0d677f67036b53b44970dcf36:medium/blog/views.py
 
 # Create your views here.
 # class BlogListView(ListView):
