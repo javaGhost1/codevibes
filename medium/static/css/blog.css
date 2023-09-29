@@ -13,7 +13,7 @@ body{
     --font-family-rebrand: Rza,Rza-fallback;
 }
 #main-container{
-    width: 90%;
+    width: 95;
     margin: auto;
     /* justify-content: space-around; */
     display: flex;
@@ -24,10 +24,10 @@ body{
 #navbar{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
+    width: 24%;
     
-    padding-left: 24px;
-    position: fixed;
+    /* position: fixed; */
     
     /* background-color: rgba(40, 1, 55, 0.6); */
 
@@ -37,7 +37,8 @@ body{
       display: none;
   }
 .logo{
-    margin-top: 90px;
+    padding: 10px 0px 10px 60px;
+    /* margin-top: 90px; */
 }
 .nav-list{
     list-style: none;
@@ -46,10 +47,12 @@ body{
 }
 .l-nav{
     border-right: 1px solid #eee;
-    padding-right: 20px;
+    padding-bottom: 70px;
+    
 
 }
 .nav-list li{
+    
     font-size: 19px;
     padding: 15px 16px;
 
@@ -111,11 +114,11 @@ body{
 }
 
 #container{
-    width: 100%;
+    width: 80%;
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding-left: 140px;
+    /* padding-left: 140px; */
     align-items: center;
     
 
@@ -137,14 +140,12 @@ body{
     display: flex;
 }
 .main{
-    width: 84%;
-    margin: auto;
     display: flex;
     /* justify-content: center; */
+    margin: 0px 40px;
     
     border-bottom: 1px solid #eee;
     line-height: 1.3em;
-    padding-top: 10px;
 }
 .main-content a:hover{
     text-decoration: none;
@@ -219,17 +220,18 @@ body{
     display: flex;
     flex-direction: column;
     /* justify-content: flex-start; */
-    padding: 40px 0px;
-    align-items: center;
+    padding: 40px;
+    align-items: flex-start;
    
     border-left: 1px solid #eee;
-    width: 36%;
+    width: 34%;
+
 
 }
 
 .nav-list{
     position: fixed;
-  
+    /* width: 34%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -529,6 +531,7 @@ body{
     max-width: 120px;
     }
    .banner{
+    
        width: 90%;
        /* height: 180px; */
        margin: auto;
@@ -536,18 +539,23 @@ body{
    
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1104px) {
+   #main-container{
+        width: 100%;
+    }
     #navbar, #left-navbar{
         position: relative;
         display: none;     
     }
+    /* .left-na */
     .top-nav{
         display: flex;
         justify-content: space-between;
         position: fixed;
         background-color: #fff;
         height: 60px;
-        width: 100vw;   
+        width: 100%;   
+        padding: 0px 30px;
         border-bottom: 1px solid #eee;
         box-shadow: rgba(160, 32, 240, 0.1) 0px 4px 6px;
        
