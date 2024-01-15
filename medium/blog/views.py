@@ -22,6 +22,7 @@ def blog_list(request, tag_slug=None):
         object_list = object_list.filter(tags__in=[tag])
     # context_object_name = 'blogs'
     # template_name = 'blog/list.html'
+    fav = bool
     paginator = Paginator(object_list, 5)
     page = request.GET.get('page')
     try:
@@ -31,12 +32,17 @@ def blog_list(request, tag_slug=None):
     except EmptyPage:
         blogs = Paginator.page(paginator.num_pages)
 
-
+    for blog in blogs:
+        if blog.favourites.filter(id=request.user.id).exists():
+            fav = True
+        else:
+            fav = False
 
     context = {
         'page': page,
         'blogs': blogs,
-        'tag': tag
+        'tag': tag,
+        'fav': fav,
     }
     return render(request, 'blog/list.html', context)
 def blog_detail(request, year, month, day, blog):

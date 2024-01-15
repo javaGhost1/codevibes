@@ -33,6 +33,7 @@ class Blog(models.Model):
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    favourites = models.ManyToManyField(User, related_name='favourite', default=None, blank=True)
     # default manager
     objects = models.Manager
     # custom manager

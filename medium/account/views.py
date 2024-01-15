@@ -1,6 +1,10 @@
 from .forms import UserRegistrationForm
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from blog.models import Blog
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
@@ -16,3 +20,18 @@ def register(request):
     else:
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form})
+
+@login_required
+def favourite_list(request):
+    new = Blog.published.filter(favourites= request.user)
+    context = {'new': new}
+    return render(request, 'registration/bookmarks.html', context)
+@login_required
+def favourite_add(request, id):
+    post = get_object_or_404(Blog, id=id)
+    if post.favourites.filter(id=request.user.id).exists():
+        post.favourites.remove(request.user)
+    else:
+        post.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
