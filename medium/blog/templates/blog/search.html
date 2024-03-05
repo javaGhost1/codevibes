@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% load blog_tags %}
+{% load static %}
 
 {% block title %}Homepage{% endblock title %}
 {% block content %}
+
 <div id="main-container">
    {% include 'right.html' %}
-    <div id='container'>
-        {% include 'navbar.html' %}
 
-        <header id="detail-banner" class="banner">
-            <!-- <span>
-                {{blog.author}}<a href="#" class="follow link">Follow</a>
-            </span> -->
-            <span>{{blog.publish}}</span>
+    <div id='container'>
+
+        {% include 'navbar.html' %}
+        <header class="banner">
+            
         </header>
    
-        <div class="main">
+        <div class="main tablet">
             
             <div class="main-content">
                 <div class="blog-body">
@@ -68,11 +68,123 @@
                     {% endfor %}
                         <p><a href="{% url "blog:post_search" %}">Search again</a></p>
                     {% else %}
-                        <h1>Search for posts</h1>
-                        <form method="get">
-                            {{ form.as_p }}
-                            <input type="submit" value="Search">
-                            </form>
+                    <div class="main-search">
+                        {% comment %} <h1>Search for posts</h1> {% endcomment %}
+                        <form class='search-control' method="GET" action="{%url 'blog:post_search'%}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type='submit' class="btn">
+                                    <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="search--v1"/>
+                                </button>
+                            
+                        </form>
+                    </div>
+                    <div class="main">
+                        <h3 class="blog-title">Search by Tag:</h3>
+                    </div>
+                    {% for blog in recommend %}
+                    <div class="">
+                        <div class="main-content">
+                            <div class='inclusions'>
+                                {% comment %} <a href="{% url 'blog:post_share' blog.id %}">Share this post</a> {% endcomment %}
+                                <div class="tags recommend-topic">
+                                   
+                                    {% for tag in blog.tags.all %}
+                                    <a href="{% url "blog:blog_list_by_tag" tag.slug %}">
+                                        {{tag.name}} {{tag.blog_count}}
+                                        
+                                    </a>
+                                    {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                    {% for blog in recommend %}
+                    <div class="main">
+                        <div class="main-content">
+                            <a href="{{blog.get_absolute_url}}" class='blog-body'>
+                                <h3 class='blog-title'>{{blog.title}}</h3>
+            
+                                <span id='body-content'>
+                                    {{blog.body|truncatewords:39|linebreaks}}
+                                </span>
+                                
+                            </a>
+                            <div class='inclusions'>
+                                <ul class='flex'>
+                                    
+                                    <p class='blog-details'><span>{{blog.publish|date:'M d'}}</span></p>
+            
+                                    {% comment %} <a href="{% url 'blog:post_share' blog.id %}">Share this post</a> {% endcomment %}
+                                    <li class='tags'>
+                                    
+                                        {% for tag in blog.tags.all %}
+                                        <a href="{% url "blog:blog_list_by_tag" tag.slug %}">
+                                            {{tag.name}}
+                                        </a>
+                                        {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </li>
+                                    <p class='blog-details'><span>4 min read</span></p>
+            
+                                </ul>
+                                {% if fav_dict %}
+                                    {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+                                    {%if blog.id in fav_dict %} 
+                                        <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                                            {% csrf_token %}
+                                            <button class='favourites' type='submit'>
+                                            <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+            
+                                                {% comment %} <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg> {% endcomment %}
+                                                
+                                            </button> 
+                                        </form>
+                                    {% else %}
+                                    <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                                        {% csrf_token %}
+                                        <button class='favourites' type='submit'>
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
+                                            
+                                        </button>
+                                    </form> 
+                                    {% endif %}
+                                    
+                                {% comment %} <a class="favourites"  href="{% url 'account:favourite_add' blog.id%}">
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
+                                    <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+                                                    
+                                </a> {% endcomment %}
+                                {% else %}
+                                    <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                                        {% csrf_token %}
+                                        <button class='favourites' type='submit'>
+            
+                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
+                                            
+                                        </button>
+                                    </form> 
+                            
+                                {% endif %}
+                                
+                            </div>
+                            
+                            
+                        </div>
+                       <div class="featured-image" >
+                            <img src="{{ blog.featured_image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        </div> 
+                    </div>
+                  
+                        {% comment %} <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                        {{ post.body|markdown|truncatewords_html:5 }} {% endcomment %}
+                    {% empty %}
+                        <p>There are no results for your search.</p>
+                    {% endfor %}
                 {% endif %}
                    
 

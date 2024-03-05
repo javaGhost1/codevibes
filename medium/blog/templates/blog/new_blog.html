@@ -22,10 +22,18 @@
         </header>
         
         
-       <div >
+       <div class="new-comment" >
         <form action="{% url 'blog:new_blog' %}" method='post'>
             {% csrf_token %}
-            {{form.as_p}}
+            <div class="form-field">
+                {{form.title}}
+            </div>
+            <div class="form-field">
+                {{form.body}}
+            </div>
+            <div class="form-field">
+                {{form.tags}}
+            </div>
             <button name='submit'>Add Blog</button>
         </form>
        </div>

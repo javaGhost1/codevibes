@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load blog_tags %}
+{% load custom_filters %}
 
 {% block title %}Homepage{% endblock title %}
 {% block content %}
@@ -40,40 +41,57 @@
                 <div>
                     <img src="https://img.icons8.com/fluency/24/null/comments.png"/>
                 </div>
-                {% with comments.count as total_comments %}
+                {% with all_comments.count as total_comments %}
 
                     <h2 class='total-comments'>
-                        {{total_comments}} comment{{total_comments|pluralize}}:
+                        {% if all_comments.count > 4 %}showing 4 of {{total_comments}} {% else %} {{total_comments}} comment{{total_comments|pluralize}}{% endif %}
                     </h2>
                 {% endwith %}
                 {% for comment in comments %}
-                    <div class="comment">
-                        <div class="comment-info">
-                            <p class='n-info'>
-                            {{comment.name|capfirst}} 
-                            </p>
-                            {% comment %} {{forloop.counter}} {% endcomment %}
-                            <p class='info'>
-                            {{comment.created|time}}
+                    <div class="comment flex">
+                        <div class='user'>
+                            <img width="48" height="48" src="https://img.icons8.com/parakeet-line/48/user.png" alt="user"/>
+                        </div>
+                        <div class='commented'>
+                            <div class="comment-info">
+                                <p class='n-info'>
+                                {{comment.name|capfirst}} 
+                                </p>
+                                {% comment %} {{forloop.counter}} {% endcomment %}
+                                <i class='info'>
+                                    {{comment.created|relative_time|markdown }}
+                                </i>
+                            </div>
+                            <p class='n-body'>
+                                {{comment.body|linebreaks|markdown}}
                             </p>
                         </div>
-                        {{comment.body|linebreaks}}
                     </div>
                 {% empty %}
+                <div id='no-comments' class = 'total-comments'>
                     <p>There are no comments yet</p>
+                </div>
                 {% endfor %}
-                {% if new_comment %}
-                    <p></p>>
-                {% else %}
-                    <h2> Leave a comment below.</h2>
-                    <form method='post'>
-                        {{comment_form.as_p}}
-                        {% csrf_token %}
-                        <p>
-                            <input type='submit' value='Add comment'>
-                        </p>
-                    </form>
-                {% endif %}
+                <div class = "new-comment">
+                    {% if new_comment %}
+                        <p></p>
+                    {% else %}
+                        <h2> Leave a comment below.</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-field">
+                                {{ comment_form.name }}
+                            </div>
+                            <div class="form-field">
+                                {{ comment_form.email }}
+                            </div>
+                            <div class="form-field">
+                                {{ comment_form.body }}
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

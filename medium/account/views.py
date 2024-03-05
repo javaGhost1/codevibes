@@ -28,10 +28,20 @@ def favourite_list(request):
     return render(request, 'registration/bookmarks.html', context)
 @login_required
 def favourite_add(request, id):
-    post = get_object_or_404(Blog, id=id)
-    if post.favourites.filter(id=request.user.id).exists():
-        post.favourites.remove(request.user)
+    if request.method == 'POST':
+        post = get_object_or_404(Blog, id=id)
+        if request.user.is_authenticated:
+        
+            if post.favourites.filter(id=request.user.id).exists():
+                post.favourites.remove(request.user)
+                
+                post.save()
+            else:
+        
+                post.favourites.add(request.user)
+            
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     else:
-        post.favourites.add(request.user)
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        return redirect('/')
 

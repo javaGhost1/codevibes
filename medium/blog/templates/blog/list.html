@@ -29,7 +29,7 @@
                     <h3 class='blog-title'>{{blog.title}}</h3>
 
                     <span id='body-content'>
-                        {{blog.body|truncatewords:25|linebreaks}}
+                        {{blog.body|truncatewords:39|linebreaks}}
                     </span>
                     
                 </a>
@@ -51,17 +51,49 @@
                         <p class='blog-details'><span>4 min read</span></p>
 
                     </ul>
-                    {% if fav %}
-                    <a  href="{% url 'account:favourite_add' blog.id%}">
+                    {% if fav_dict %}
+                        {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+                        {%if blog.id in fav_dict %} 
+                            <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                                {% csrf_token %}
+                                <button class='favourites' type='submit'>
+                                <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+
+                                    {% comment %} <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg> {% endcomment %}
+                                    
+                                </button> 
+                            </form>
+                        {% else %}
+                        <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                            {% csrf_token %}
+                            <button class='favourites' type='submit'>
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
-                                         
-                    </a>
+                                
+                            </button>
+                        </form> 
+                        {% endif %}
+                        
+                    {% comment %} <a class="favourites"  href="{% url 'account:favourite_add' blog.id%}">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
+                        <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+                                        
+                    </a> {% endcomment %}
                     {% else %}
-                    <a  href="{% url 'account:favourite_add' blog.id%}">
-                        remove
-                        {% comment %} <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/bookmark-ribbon.png" alt="bookmark-ribbon"/> {% endcomment %}
-                                         
-                    </a>
+                        <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                            {% csrf_token %}
+                            <button class='favourites' type='submit'>
+
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
+                                
+                            </button>
+                        </form> 
+                    {% comment %} <a class="favourites"  href="{% url 'account:favourite_add' blog.id%}"> {% endcomment %}
+                        {% comment %} <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/bookmark-ribbon.png" alt="bookmark-ribbon"/> {% endcomment %}
+                        {% comment %} <img src="https://img.icons8.com/ios/24/000000/bookmark-ribbon--v1.png"/> {% endcomment %}
+
+                        
+                    {% comment %} </a> {% endcomment %}
+                    {% comment %} {% endif %} {% endcomment %}
                     {% endif %}
                     
                 </div>

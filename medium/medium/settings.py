@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'taggit',
     'easy_thumbnails',
     'django.contrib.postgres',
+    'markdown',
 ]
 
 MIDDLEWARE = [

@@ -35,7 +35,7 @@
                 </a>
                 <div class='inclusions'>
                     <ul class='flex'>
-                        
+                      
                         <p class='blog-details'><span>{{blog.publish|date:'M d'}}</span></p>
 
                         {% comment %} <a href="{% url 'blog:post_share' blog.id %}">Share this post</a> {% endcomment %}
@@ -51,10 +51,16 @@
                         <p class='blog-details'><span>4 min read</span></p>
 
                     </ul>
-                    <a  href="#">
+                    <form action="{%url 'account:favourite_add' blog.id%}" method='post'>
+                        {% csrf_token %}
+                        <button class='favourites' type='submit'>
+                            <img width="25" height="25" src="https://img.icons8.com/ios-filled/25/bookmark-ribbon.png" alt="bookmark-ribbon"/>
+                            </button> 
+                    </form>
+                    {% comment %} <a  href="{% url 'accounts:favourite_add' blog.id%}">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="lj lk"><path d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z" fill="#292929"></path></svg>
                                          
-                    </a>
+                    </a> {% endcomment %}
                 </div>
                 
                 
@@ -66,7 +72,7 @@
        
         {% endfor %}
         <div class='pages'>
-            {% include "pagination.html" with page=blogs %}
+            {% include "pagination.html" with page=new %}
         </div>
     </div>
     {% include 'left.html' %}

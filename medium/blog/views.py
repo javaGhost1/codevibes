@@ -15,14 +15,17 @@ def blog_list(request, tag_slug=None):
     
     object_list = Blog.published.all()
     tag = None
-   
+    tags_with_count = None
 
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
+        tags_with_count = Tag.objects.annotate(blog_count=Count('blog'))
+
+
     # context_object_name = 'blogs'
     # template_name = 'blog/list.html'
-    fav = bool
+       
     paginator = Paginator(object_list, 5)
     page = request.GET.get('page')
     try:
@@ -32,24 +35,34 @@ def blog_list(request, tag_slug=None):
     except EmptyPage:
         blogs = Paginator.page(paginator.num_pages)
 
-    for blog in blogs:
-        if blog.favourites.filter(id=request.user.id).exists():
-            fav = True
-        else:
-            fav = False
+    fav_dict = {}
+    if request.user.is_authenticated:
+        for blog in blogs:
+            user_favorites = blog.favourites.all()
+
+            # fav_dict[blog.id] = blog in user_favorites
+          
+            if blog.favourites.filter(id=request.user.id).exists():
+                fav_dict[blog.id] = blog in user_favorites
+                
+                
+            else:
+                blog.favourites.remove(request.user)
 
     context = {
         'page': page,
         'blogs': blogs,
         'tag': tag,
-        'fav': fav,
+        'tags_with_count':tags_with_count,
+        'fav_dict': fav_dict,
     }
     return render(request, 'blog/list.html', context)
 def blog_detail(request, year, month, day, blog):
     blog = get_object_or_404(Blog, slug=blog, status='published', publish__year=year, publish__month=month, publish__day=day)
 
     # list of active comments
-    comments = blog.comments.filter(active=True)
+    all_comments = blog.comments.filter(active=True)
+    comments = blog.comments.filter(active=True)[:4]
 
     new_comment = None
 
@@ -71,7 +84,7 @@ def blog_detail(request, year, month, day, blog):
     similar_posts = Blog.published.filter(tags__in=post_tag_id).exclude(id=blog.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
 
-    context = {'blog': blog, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'similar_posts':similar_posts}
+    context = {'blog': blog, 'all_comments': all_comments, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form, 'similar_posts':similar_posts}
     return render(request, 'blog/details.html', context)
 @login_required
 def new_blog(request):
@@ -113,6 +126,7 @@ def post_share(request, post_id):
 
 def post_search(request):
     form = SearchForm()
+    recommend = Blog.published.order_by('created')[:4]
     query = None
     results = []
     if 'query' in request.GET:
@@ -122,6 +136,7 @@ def post_search(request):
             results = Blog.published.annotate(search=SearchVector('title', 'body')).filter(search=query)
     context = {
         'form': form,
+        'recommend':recommend,
         'query': query,
         'results': results,
     }
